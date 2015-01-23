@@ -11,12 +11,12 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Jabatan
+        Pinjaman
         <small>Control panel</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Jabatan</li>
+        <li class="active">Pinjaman</li>
     </ol>
 </section>
 
@@ -34,34 +34,34 @@
     </div>
     <div class="row">
         <div class="col-xs-5">
-            <form name="formJabatan">
+            <form name="formPinjaman">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <span class="panel-title">Form Input Jabatan</span>
+                        <span class="panel-title">Input Cuti</span>
                     </div>
                     <div class="panel-body">
                         <div class="form-horizontal">
                             <div 
                                 class="form-group" 
                                 ng-class="{
-									'has-error':formJabatan.kodeJabatan.$invalid, 
-									'has-success':formJabatan.kodeJabatan.$valid
+									'has-error':formPinjaman.nip.$invalid, 
+									'has-success':formPinjaman.nip.$valid
 								}">
                                 <div class="col-sm-5">
-                                    <label for="kodeJabatan" class="control-label">Kode Jabatan</label>
+                                    <label for="nip" class="control-label">Nip</label>
                                 </div>
                                 <div class="col-sm-7">
                                     <input 
                                         type="text" 
                                         class="form-control" 
-                                        id="kodeJabatan" 
-                                        name="kodeJabatan"
-                                        ng-model="currentJabatan.kodeJabatan"
+                                        id="nip" 
+                                        name="nip"
+                                        ng-model="currentCuti.nip"
                                         required />
                                     <span 
                                         style="float:right; color:white" 
                                         class="help-block label label-danger" 
-                                        ng-show="formJabatan.kodeJabatan.$error.required">
+                                        ng-show="formPinjaman.nip.$error.required">
                                         This Field is Required
                                     </span>
                                     <span 
@@ -75,104 +75,86 @@
                             <div 
                                 class="form-group" 
                                 ng-class="{
-									'has-error':formJabatan.namaJabatan.$invalid, 
-									'has-success':formJabatan.namaJabatan.$valid
+									'has-error':formPinjaman.date.$invalid, 
+									'has-success':formPinjaman.date.$valid
 								}">
                                 <div class="col-sm-5">
-                                    <label for="namaJabatan" class="control-label">Nama Jabatan</label>
+                                    <label for="date" class="control-label">Tanggal</label>
                                 </div>
                                 <div class="col-sm-7">
                                     <input 
                                         type="text" 
                                         class="form-control" 
-                                        id="namaJabatan" 
-                                        name="namaJabatan"
-                                        ng-model="currentJabatan.namaJabatan"
+                                        id="date" 
+                                        name="date"
+                                        ng-model="currentCuti.date"
                                         required />
                                     <span 
                                         style="float:right; color:white" 
                                         class="help-block label label-danger" 
-                                        ng-show="formJabatan.namaJabatan.$error.required">
+                                        ng-show="formPinjaman.date.$error.required">
                                         This Field is Required
                                     </span>
                                 </div>
                             </div>
                             <div 
                                 class="form-group" 
-                                ng-class="{
-									'has-error':formJabatan.status.$invalid, 
-									'has-success':formJabatan.status.$valid
-								}">
-                                <div class="col-sm-5">
-                                    <label for="status" class="control-label">Level Jabatan</label>
-                                </div>
-                                <div class="col-sm-7">
-                                    <select class="form-control" name="status" ng-model="currentJabatan.status" required>
-                                        <option ng-model="levelJabatan" ng-repeat="x in statuses" value="{{x.value}}">{{x.name}}</option>
-                                    </select>
-                                    <span 
-                                        style="float:right; color:white" 
-                                        class="help-block label label-danger" 
-                                        ng-show="formJabatan.status.$error.required">
-                                        This Field is Required
-                                    </span>
-                                </div>
-                            </div>
-                                 <div 
-                                class="form-group" 
-                                ng-class="{
-                                    'has-error':formJabatan.gajiPokok.$invalid, 
-                                    'has-success':formJabatan.gajiPokok.$valid
+                               ng-class="{
+                                    'has-error':formPinjaman.nominal.$invalid, 
+                                    'has-success':formPinjaman.nominal.$valid
                                 }">
                                 <div class="col-sm-5">
-                                    <label for="gajipokok" class="control-label">Gaji Pokok</label>
+                                    <label for="nominal" class="control-label">Nominal</label>
                                 </div>
                                 <div class="col-sm-7">
                                     <input 
                                         type="text" 
                                         class="form-control" 
-                                        id="gajiPokok" 
-                                        name="gajiPokok"
-                                        ng-model="currentJabatan.gajiPokok"
+                                       
+                                        id="nominal" 
+                                        name="nominal"
+                                        ng-model="currentCuti.nominal"
                                         required />
                                     <span 
                                         style="float:right; color:white" 
                                         class="help-block label label-danger" 
-                                        ng-show="formJabatan.gajiPokok.$error.required">
+                                        ng-show="formPinjaman.nominal.$error.required">
                                         This Field is Required
                                     </span>
                                 </div>
                             </div>
-                                     <div 
+              
+                            <div 
                                 class="form-group" 
                                 ng-class="{
-                                    'has-error':formJabatan.tunjanganJabatan.$invalid, 
-                                    'has-success':formJabatan.tunjanganJabatan.$valid
+                                    'has-error':formPinjaman.keterangan.$invalid, 
+                                    'has-success':formPinjaman.keterangan.$valid
                                 }">
                                 <div class="col-sm-5">
-                                    <label for="tunjanganJabatan" class="control-label">Tunjangan Jabatan</label>
+                                    <label for="keterangan" class="control-label">Keterangan</label>
                                 </div>
                                 <div class="col-sm-7">
                                     <input 
                                         type="text" 
                                         class="form-control" 
-                                        id="tunjanganJabatan" 
-                                        name="tunjanganJabatan"
-                                        ng-model="currentJabatan.tunjanganJabatan"
+                                        id="keterangan" 
+                                        name="keterangan"
+                                        ng-model="currentCuti.keterangan"
                                         required />
                                     <span 
                                         style="float:right; color:white" 
                                         class="help-block label label-danger" 
-                                        ng-show="formJabatan.tunjanganJabatan.$error.required">
+                                        ng-show="formPinjaman.keterangan.$error.required">
                                         This Field is Required
                                     </span>
                                 </div>
                             </div>
+        
                             <div align="right">
                                 <button 
                                     class="btn btn-primary" 
                                     ng-click="save()" 
-                                    ng-disabled="isClean() || formJabatan.$invalid">
+                                    ng-disabled="isClean() || formPinjaman.$invalid">
                                     Save
                                 </button>
                                 <button 
@@ -193,19 +175,19 @@
                         <thead>
                             <tr>
                                 <th>
-                                   Kode Jabatan
+                                    Nip
                                 </th>
                                 <th>
-                                    Nama Jabatan
+                                    Tanggal
                                 </th>
                                 <th>
-                                    Level Jabatan
+                                   Nominal
                                 </th>
                                 <th>
-                                    Gaji Pokok
+                                    Keterangan
                                 </th>
                                 <th>
-                                    Tunjangan Jabatan
+                                    Total Pinjaman
                                 </th>
                                 <th>
                                     Action
@@ -214,11 +196,11 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="x in merchants">
-                                <td>{{x.kodeJabatan}}</td>
-                                <td>{{x.namaJabatan}}</td>
-                                <td>{{x.levelJabatan}}</td>
-                                <td>{{x.gajiPokok}}</td>
-                                <td>{{x.tunjanganJabatan}}</td>
+                                <td>{{x.nip}}</td>
+                                <td>{{x.bulan}}</td>
+                                <td>{{x.tahun}}</td>
+                                <td>{{x.jumlahAlfa}}</td>
+                                <td>{{x.durasiTelat}}</td>
                                 <td class="col-xs-1">
                                     <a class="glyphicon glyphicon-pencil" ng-click="edit(x)"></a>
                                     <a class="glyphicon glyphicon-remove" ng-click="showModalDelete(x)"></a>

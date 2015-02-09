@@ -16,23 +16,19 @@ import org.hibernate.annotations.GenericGenerator;
  * @author teddy
  */
 @Entity
-@Table(name = "user")
-public class AbsensiModel {
+@Table(name = "bank_model")
+public class BankModel {
 
     @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy="uuid")
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
-    
-    private String nip;
-    
-    private String bulan;
-    
-    private Long jumlahAlfa;
-    
-    private int durasiTelat;
-    
-    private String jumlahPotongan;
-    
-    
+
+    private String kodeBank;
+
+    private String namaBank;
+
+    private String noRekening;
+
+    private String atasNama;
 }

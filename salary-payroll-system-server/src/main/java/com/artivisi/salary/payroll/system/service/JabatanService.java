@@ -5,7 +5,7 @@
  */
 package com.artivisi.salary.payroll.system.service;
 
-import com.artivisi.salary.payroll.system.model.JabatanModel;
+import com.artivisi.salary.payroll.system.model.Jabatan;
 import java.io.Serializable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author teddy
  */
 @Repository
-public interface JabatanService extends PagingAndSortingRepository<JabatanModel, String>{
+public interface JabatanService extends PagingAndSortingRepository<Jabatan, String>{
     
 }

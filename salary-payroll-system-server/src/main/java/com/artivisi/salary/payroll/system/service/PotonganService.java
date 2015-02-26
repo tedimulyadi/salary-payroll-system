@@ -5,8 +5,7 @@
  */
 package com.artivisi.salary.payroll.system.service;
 
-import com.artivisi.salary.payroll.system.model.PotonganModel;
-import java.io.Serializable;
+import com.artivisi.salary.payroll.system.model.Potongan;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author teddy
  */
 @Repository
-public interface PotonganService extends PagingAndSortingRepository<PotonganModel, String>{
-    
+public interface PotonganService extends PagingAndSortingRepository<Potongan, String> {
+
 }

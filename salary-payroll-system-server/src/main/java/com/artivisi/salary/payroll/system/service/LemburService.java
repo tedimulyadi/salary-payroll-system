@@ -5,7 +5,7 @@
  */
 package com.artivisi.salary.payroll.system.service;
 
-import com.artivisi.salary.payroll.system.model.LemburModel;
+import com.artivisi.salary.payroll.system.model.Lembur;
 import java.io.Serializable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author teddy
  */
 @Repository
-public interface LemburService extends PagingAndSortingRepository<LemburModel, String> {
+public interface LemburService extends PagingAndSortingRepository<Lembur, String> {
 
 }

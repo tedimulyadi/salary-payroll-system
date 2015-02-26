@@ -5,7 +5,7 @@
  */
 package com.artivisi.salary.payroll.system.service;
 
-import com.artivisi.salary.payroll.system.model.AbsensiModel;
+import com.artivisi.salary.payroll.system.model.Absensi;
 import java.io.Serializable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author teddy
  */
 @Repository
-public interface AbsensiService extends PagingAndSortingRepository<AbsensiModel, String> {
+public interface AbsensiService extends PagingAndSortingRepository<Absensi, String> {
 
 }

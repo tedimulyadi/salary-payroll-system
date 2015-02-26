@@ -48,42 +48,16 @@
             <aside class="left-side sidebar-offcanvas">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
-                    <!-- Sidebar user panel 
-                    <div class="user-panel" ng-controller="AccountCtrl">
-                        <div class="pull-left image">
-                            <img src="assets/img/avatar3.png" class="img-circle" alt="User Image" />
-                        </div>
-                        <div class="pull-left info">
-                            <p>Hello, {{customerLoggin.name}}</p>
-
-                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                        </div>
-                    </div> -->
-                    <!-- search form 
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>-->
-                    <!-- /.search form -->
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
-                       <!--  <li><a href="#main/generateVoucher">Generate Voucher</a></li>
-                        <li><a href="#main/history_transaksi">History Transaksi</a></li>
-                        <li><a href="#main/merchant">Merchant</a></li>
-						<li><a href="#main/transaksiCustomer">Transaksi Customer</a></li>
-                        <li><a href="#main/topup">Topup</a></li> -->
-                        <li><a href="#main/jabatan">Jabatan</a></li>
-                        <li><a href="#main/bank">Bank</a></li>
                         <li><a href="#main/absensi">Absensi</a></li>
+                        <li><a href="#main/bank">Bank</a></li>
                         <li><a href="#main/cuti">Cuti</a></li>
+                        <li><a href="#main/gaji">Gaji</a></li>
+                        <li><a href="#main/jabatan">Jabatan</a></li>
                         <li><a href="#main/lembur">Lembur</a></li>
                         <li><a href="#main/pinjaman">Pinjaman</a></li>
-                         <li><a href="#main/potongan">Potongan</a></li>
-                          <li><a href="#main/gaji">Gaji</a></li>
+                        <li><a href="#main/potongan">Potongan</a></li>
                     </ul>
                 </section>
                 <!-- /.sidebar -->
@@ -133,6 +107,8 @@
         <script src="scripts/services/jabatanservice.js"></script>
         <script src="scripts/services/lemburservice.js"></script>
         <script src="scripts/services/pinjamanservice.js"></script>
+        <script src="scripts/services/bankservice.js"></script>
+        <script src="scripts/services/configservice.js"></script>
         <!-- endbuild -->
         
         <!-- Template Script -->

@@ -1,10 +1,6 @@
 'use strict';
 
 /**
- * @ngdoc service
- * @name penggajianUiApp.bankservice
- * @description
- * # bankservice
  * Factory in the penggajianUiApp.
  */
 angular.module('penggajianUiApp')
@@ -30,8 +26,8 @@ angular.module('penggajianUiApp')
           return $http.delete('/salary-payroll-system-server/api/bank/' + obj.id);
         }
       }
-      findById: function(username) {
+      findById: function(id) {
         return $http.get('/salary-payroll-system-server/api/findById/'+ id);
       }
-    };
+     };
   });

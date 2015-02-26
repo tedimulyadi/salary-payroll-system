@@ -9,7 +9,7 @@
  */
 angular.module('penggajianUiApp')
   .factory('ConfigService', function () {
-     var urlServer = "/restful-server";
+     var urlServer = "/salary-payroll-system-server";
     return {
         serverUrl : urlServer
     };

@@ -8,9 +8,9 @@
  * Factory in the penggajianUiApp.
  */
 angular.module('penggajianUiApp')
-  .factory('absensiservice', function ($resource, $http) {
+  .factory('AbsenService', function ($resource, $http, ConfigService) {
     return{
-      absensi: $resource('/salary-payroll-system-server/api/absensi/:id'),
+      absensi: $resource(ConfigService.serverUrl + '/api/absensi/:id'),
       get: function (param, callback) {
         return this.absensi.get(param, callback);
       },
@@ -19,18 +19,18 @@ angular.module('penggajianUiApp')
       },
       save: function(obj){
         if (obj.id == null) {
-          return $http.post('/salary-payroll-system-server/api/absensi', obj);
+          return $http.post(ConfigService.serverUrl + '/api/absensi', obj);
         }else{
-          return $http.put('/salary-payroll-system-server/api/absensi/' + obj.id, obj);
+          return $http.put(ConfigService.serverUrl + '/api/absensi/' + obj.id, obj);
         }
       },
       remove: function(obj){
         if (obj.id != null) {
-          return $http.delete('/salary-payroll-system-server/api/absensi/' + obj.id);
+          return $http.delete(ConfigService.serverUrl + '/api/absensi/' + obj.id);
         }
-      }
+      },
       findById: function(username) {
-        return $http.get('/salary-payroll-system-server/api/findById/'+ id);
+        return $http.get(ConfigService.serverUrl + '/api/findById/'+ id);
       }
     };
    

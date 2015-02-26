@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the yoApp
  */
-angular.module('ewalletAdminApp')
+angular.module('penggajianUiApp')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

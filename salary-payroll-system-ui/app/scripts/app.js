@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ewalletAdminApp', [
+angular.module('penggajianUiApp', [
     'ngCookies',
     'ngResource',
     'ngRoute',
@@ -12,26 +12,6 @@ angular.module('ewalletAdminApp', [
             templateUrl: 'views/main.html',
             controller: 'MainCtrl'
         })
-        // .when('/main/generateVoucher', {
-        //     templateUrl: 'views/generateVoucher.html',
-        //     controller: ''
-        // })
-        // .when('/main/transaksiCustomer', {
-        //     templateUrl: 'views/transaksicustomer.html',
-        //     controller: ''
-        // })
-        // .when('/main/history_transaksi', {
-        //     templateUrl: 'views/history_transaksi.html',
-        //     controller: ''
-        // })
-        // .when('/main/topup', {
-        //     templateUrl: 'views/topup.html',
-        //     controller: ''
-        // })
-        // .when('/main/merchant', {
-        //   templateUrl: 'views/merchant.html',
-        //   controller: ''
-        // })
         .when('/main/jabatan', {
           templateUrl: 'views/jabatan.html',
           controller: ''
@@ -42,7 +22,7 @@ angular.module('ewalletAdminApp', [
         })
          .when('/main/absensi', {
           templateUrl: 'views/absensi.html',
-          controller: ''
+          controller: 'AbsensiCtrl'
         })
            .when('/main/cuti', {
           templateUrl: 'views/cuti.html',

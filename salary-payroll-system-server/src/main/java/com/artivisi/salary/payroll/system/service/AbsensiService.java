@@ -6,7 +6,6 @@
 package com.artivisi.salary.payroll.system.service;
 
 import com.artivisi.salary.payroll.system.model.Absensi;
-import java.io.Serializable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

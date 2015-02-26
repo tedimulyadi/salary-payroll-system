@@ -9,7 +9,8 @@
  */
 angular.module('penggajianUiApp')
   .factory('pinjamanservice', function () {
-    pinjaman: $resource('/salary-payroll-system-server/api/pinjaman/:id'),
+    return {
+      pinjaman: $resource('/salary-payroll-system-server/api/pinjaman/:id'),
       get: function (param, callback) {
         return this.pinjaman.get(param, callback);
       },
@@ -27,9 +28,9 @@ angular.module('penggajianUiApp')
         if (obj.id != null) {
           return $http.delete('/salary-payroll-system-server/api/pinjaman/' + obj.id);
         }
-      }
+      },
       findById: function(username) {
         return $http.get('/salary-payroll-system-server/api/findById/'+ id);
-      }
+      }  
     };
   });

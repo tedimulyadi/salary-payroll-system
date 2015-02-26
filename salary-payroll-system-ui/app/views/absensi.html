@@ -177,25 +177,25 @@
                             <div 
                                 class="form-group" 
                                ng-class="{
-                                    'has-error':formAbsensi.jumlahPotongangAbsensi.$invalid, 
-                                    'has-success':formAbsensi.jumlahPotongangAbsensi.$valid
+                                    'has-error':formAbsensi.jumlahPotongan.$invalid, 
+                                    'has-success':formAbsensi.jumlahPotongan.$valid
                                 }">
                                 <div class="col-sm-5">
-                                    <label for="jumlahPotongangAbsensi" class="control-label">Jumlah Potongan</label>
+                                    <label for="jumlahPotongan" class="control-label">Jumlah Potongan</label>
                                 </div>
                                 <div class="col-sm-7">
                                     <input 
                                         type="text" 
                                         class="form-control" 
                     
-                                        id="jumlahPotongangAbsensi" 
-                                        name="jumlahPotongangAbsensi"
-                                        ng-model="currentAbsensi.jumlahPotongangAbsensi"
+                                        id="jumlahPotongan" 
+                                        name="jumlahPotongan"
+                                        ng-model="currentAbsensi.jumlahPotongan"
                                         required />
                                     <span 
                                         style="float:right; color:white" 
                                         class="help-block label label-danger" 
-                                        ng-show="formAbsensi.jumlahPotongangAbsensi.$error.required">
+                                        ng-show="formAbsensi.jumlahPotongan.$error.required">
                                         This Field is Required
                                     </span>
                                 </div>
@@ -245,7 +245,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="x in merchants">
+                            <tr ng-repeat="x in absensies">
                                 <td>{{x.nip}}</td>
                                 <td>{{x.bulan}}</td>
                                 <td>{{x.tahun}}</td>

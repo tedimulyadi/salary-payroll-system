@@ -5,11 +5,14 @@
  */
 package com.artivisi.salary.payroll.system.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -24,14 +27,28 @@ public class Absensi {
     @GenericGenerator(name="system-uuid", strategy="uuid")
     private String id;
     
+    @NotNull
+    @Column(nullable = false)
     private String nip;
     
+    @NotNull
+    @Column(nullable = false)
     private String bulan;
     
+    @NotNull
+    @Column(nullable = false)
+    private String tahun;
+    
+    @NotNull
+    @Column(nullable = false, name = "jumlah_alfa")
     private Long jumlahAlfa;
     
+    @NotNull
+    @Column(nullable = false, name = "durasi_telat")
     private int durasiTelat;
     
+    @NotNull
+    @Column(nullable = false, name = "jumlah_potongan")
     private String jumlahPotongan;
 
     public String getId() {
@@ -81,6 +98,13 @@ public class Absensi {
     public void setJumlahPotongan(String jumlahPotongan) {
         this.jumlahPotongan = jumlahPotongan;
     }
-    
+
+    public String getTahun() {
+        return tahun;
+    }
+
+    public void setTahun(String tahun) {
+        this.tahun = tahun;
+    }
     
 }

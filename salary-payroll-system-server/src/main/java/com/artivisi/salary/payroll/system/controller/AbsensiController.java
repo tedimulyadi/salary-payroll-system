@@ -7,6 +7,8 @@ package com.artivisi.salary.payroll.system.controller;
 
 import com.artivisi.salary.payroll.system.model.Absensi;
 import com.artivisi.salary.payroll.system.service.AbsensiService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,7 +42,7 @@ public class AbsensiController {
     }
 
     @RequestMapping(value = "/absensi", method = RequestMethod.POST)
-    public void saveAbsensi(@RequestBody Absensi absensi) throws Exception {
+    public void saveAbsensi(@RequestBody Absensi absensi, HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (absensi == null) {
             throw new Exception("Tidak boleh kosong");
         }

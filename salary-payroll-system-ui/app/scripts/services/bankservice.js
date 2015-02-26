@@ -25,7 +25,7 @@ angular.module('penggajianUiApp')
         if (obj.id != null) {
           return $http.delete('/salary-payroll-system-server/api/bank/' + obj.id);
         }
-      }
+      },
       findById: function(id) {
         return $http.get('/salary-payroll-system-server/api/findById/'+ id);
       }

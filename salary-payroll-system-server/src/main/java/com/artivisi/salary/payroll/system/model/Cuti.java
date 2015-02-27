@@ -1,9 +1,11 @@
 package com.artivisi.salary.payroll.system.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -19,12 +21,20 @@ public class Cuti {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
+    @NotNull
+    @Column(nullable = false)
     private String nip;
 
-    private String tanggalBulan;
+    @NotNull
+    @Column(nullable = false)
+    private String tanggal;
 
+    @NotNull
+    @Column(nullable = false)
     private String keterangan;
 
+    @NotNull
+    @Column(nullable = false, name = "jumlah_cuti")
     private String jumlahCuti;
 
     public String getId() {
@@ -44,11 +54,11 @@ public class Cuti {
     }
 
     public String getTanggalBulan() {
-        return tanggalBulan;
+        return tanggal;
     }
 
-    public void setTanggalBulan(String tanggalBulan) {
-        this.tanggalBulan = tanggalBulan;
+    public void setTanggalBulan(String tanggal) {
+        this.tanggal = tanggal;
     }
 
     public String getKeterangan() {

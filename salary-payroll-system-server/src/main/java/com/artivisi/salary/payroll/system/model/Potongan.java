@@ -5,10 +5,12 @@
  */
 package com.artivisi.salary.payroll.system.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -26,11 +28,14 @@ public class Potongan {
 
     private String nip;
 
+    @Column(name = "jumlah_pinjaman")
     private String jumlahPinjaman;
 
+    @Column(name = "potongan_absen")
     private String potonganAbsen;
 
-    private String subTotal;
+    @Column(name = "total_potongan")
+    private String totalPotongan;
 
     public String getId() {
         return id;
@@ -64,13 +69,12 @@ public class Potongan {
         this.potonganAbsen = potonganAbsen;
     }
 
-    public String getSubTotal() {
-        return subTotal;
+    public String getTotalPotongan() {
+        return totalPotongan;
     }
 
-    public void setSubTotal(String subTotal) {
-        this.subTotal = subTotal;
+    public void setTotalPotongan(String totalPotongan) {
+        this.totalPotongan = totalPotongan;
     }
-    
-    
+
 }

@@ -5,10 +5,13 @@
  */
 package com.artivisi.salary.payroll.system.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -24,12 +27,21 @@ public class Gaji {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
+    @NotNull
+    @Column(nullable = false)
     private String bulan;
 
+    @NotNull
+    @Column(nullable = false, name = "tunjangan_kesehatan")
     private String tunjanganKesehatan;
 
-    private String gajiPokok;
+    @NotNull
+    @ManyToOne
+    @Column(name = "id_jabatan")
+    private Jabatan idJabatan;
 
+    @NotNull
+    @Column(nullable = false, name = "total_gaji")
     private String totalGaji;
 
     public String getId() {
@@ -56,12 +68,12 @@ public class Gaji {
         this.tunjanganKesehatan = tunjanganKesehatan;
     }
 
-    public String getGajiPokok() {
-        return gajiPokok;
+    public Jabatan getIdJabatan() {
+        return idJabatan;
     }
 
-    public void setGajiPokok(String gajiPokok) {
-        this.gajiPokok = gajiPokok;
+    public void setIdJabatan(Jabatan idJabatan) {
+        this.idJabatan = idJabatan;
     }
 
     public String getTotalGaji() {
@@ -71,5 +83,5 @@ public class Gaji {
     public void setTotalGaji(String totalGaji) {
         this.totalGaji = totalGaji;
     }
-    
+
 }

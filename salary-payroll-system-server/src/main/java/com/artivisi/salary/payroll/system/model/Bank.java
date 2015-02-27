@@ -5,10 +5,12 @@
  */
 package com.artivisi.salary.payroll.system.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -24,12 +26,20 @@ public class Bank {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
+    @NotNull
+    @Column(nullable = false, name="kode_bank")
     private String kodeBank;
 
+    @NotNull
+    @Column(nullable = false, name="nama_bank")
     private String namaBank;
 
+    @NotNull
+    @Column(nullable = false, name = "no_rekening")
     private String noRekening;
 
+    @NotNull
+    @Column(nullable = false, name = "atas_nama")
     private String atasNama;
 
     public String getId() {

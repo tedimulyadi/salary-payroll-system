@@ -1,10 +1,13 @@
 'use strict';
 
 angular.module('penggajianUiApp', [
+    'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
-    'ngSanitize'
+    'ngSanitize',
+    'ngTouch',
+    'ui.bootstrap'
 ])
 .config(function($routeProvider) {
     $routeProvider

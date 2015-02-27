@@ -5,10 +5,13 @@
  */
 package com.artivisi.salary.payroll.system.model;
 
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -24,12 +27,19 @@ public class Lembur {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
-    private String tanggal;
+    @NotNull
+    private Date tanggal;
 
+    @NotNull
+    @Column(name = "jumlah_jam_lembur")
     private String jumlahJamLembur;
 
+    @NotNull
+    @Column(name = "upah_per_jam")
     private String UpahPerJam;
 
+    @NotNull
+    @Column(name = "sub_total")
     private String subTotal;
 
     public String getId() {
@@ -40,11 +50,11 @@ public class Lembur {
         this.id = id;
     }
 
-    public String getTanggal() {
+    public Date getTanggal() {
         return tanggal;
     }
 
-    public void setTanggal(String tanggal) {
+    public void setTanggal(Date tanggal) {
         this.tanggal = tanggal;
     }
 
@@ -71,6 +81,5 @@ public class Lembur {
     public void setSubTotal(String subTotal) {
         this.subTotal = subTotal;
     }
-    
-    
+
 }

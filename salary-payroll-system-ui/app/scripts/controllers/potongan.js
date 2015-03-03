@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name penggajianUiApp.controller:KaryawanCtrl
+ * @name penggajianUiApp.controller:PotonganCtrl
  * @description
- * # KaryawanCtrl
+ * # PotonganCtrl
  * Controller of the penggajianUiApp
  */
 angular.module('penggajianUiApp')
-  .controller('KaryawanCtrl', function ($scope, KaryawanService) {
-    $scope.currentKaryawan = {};
-    $scope.karyawans = KaryawanService.query();
+  .controller('PotonganCtrl', function ($scope, PotonganService) {
+    $scope.currentPotongan = {};
+    $scope.potongans = PotonganService.query();
     $scope.isSelected = null;
     $scope.editNip = null;
     
@@ -19,28 +19,28 @@ angular.module('penggajianUiApp')
             return;
         }
         
-        $scope.currentKaryawan = KaryawanService.get({id: x.id}, function(data) {
+        $scope.currentPotongan = PotonganService.get({id: x.id}, function(data) {
             $scope.editNip = data.nip;
             $scope.validateNip = false;
         });
     };
     
     $scope.save = function() {
-        KaryawanService.save($scope.currentKaryawan).success(function() {
-            $scope.karyawans = KaryawanService.query();
+        PotonganService.save($scope.currentPotongan).success(function() {
+            $scope.potongans = PotonganService.query();
             $scope.clear();
         })
     };
     
     $scope.clear = function() {
-        $scope.currentKaryawan = "";
+        $scope.currentPotongan = "";
     };
     
     $scope.remove = function() {
         $scope.clear();
         if ($scope.isSelected.id != null) {
-            KaryawanService.remove($scope.isSelected).success(function() {
-                $scope.karyawans = KaryawanService.query();
+            PotonganService.remove($scope.isSelected).success(function() {
+                $scope.potongans = PotonganService.query();
                 $scope.isSelected = null;
                 $('#modalDelete').modal('hide');
             })

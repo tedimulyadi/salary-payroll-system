@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name penggajianUiApp.controller:CutiCtrl
+ * @name penggajianUiApp.controller:JabatanCtrl
  * @description
- * # CutiCtrl
+ * # JabatanCtrl
  * Controller of the penggajianUiApp
  */
 angular.module('penggajianUiApp')
-  .controller('CutiCtrl', function ($scope, CutiService) {
-  	$scope.currentCuti = {};
-  	$scope.cuties = CutiService.query();
+  .controller('JabatanCtrl', function ($scope, JabatanService) {
+   	$scope.currentJabatan = {};
+  	$scope.jabatans = JabatanService.query();
   	$scope.isSelected = null ;
   	$scope.editNip = null;
 
@@ -19,28 +19,28 @@ angular.module('penggajianUiApp')
  			return;	
  		};
 
- 		$scope.currentCuti = CutiService.get({id: x.id}, function(data){
+ 		$scope.currentJabatan = JabatanService.get({id: x.id}, function(data){
  			$scope.editNip = data.nip;
  			$scope.validateNip = false;
  		});
  	};
 
  	$scope.save = function() {
-        CutiService.save($scope.currentCuti).success(function() {
-            $scope.cuties = CutiService.query();
+        JabatanService.save($scope.currentJabatan).success(function() {
+            $scope.jabatans = JabatanService.query();
             $scope.clear();
         })
     };
 
     $scope.clear = function() {
-        $scope.currentCuti = "";
+        $scope.currentJabatan = "";
     };
 
     $scope.remove = function() {
         $scope.clear();
         if ($scope.isSelected.id != null) {
-            CutiService.remove($scope.isSelected).success(function() {
-                $scope.cuties = CutiService.query();
+            JabatanService.remove($scope.isSelected).success(function() {
+                $scope.jabatans = JabatanService.query();
                 $scope.isSelected = null;
                 $('#modalDelete').modal('hide');
             })
@@ -56,4 +56,4 @@ angular.module('penggajianUiApp')
     $scope.showReportModal = function() {        
         $('#modalReport').modal('show');
     };
-});
+  });

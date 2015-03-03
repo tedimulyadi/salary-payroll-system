@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name penggajianUiApp.controller:KaryawanCtrl
+ * @name penggajianUiApp.controller:LemburCtrl
  * @description
- * # KaryawanCtrl
+ * # LemburCtrl
  * Controller of the penggajianUiApp
  */
 angular.module('penggajianUiApp')
-  .controller('KaryawanCtrl', function ($scope, KaryawanService) {
-    $scope.currentKaryawan = {};
-    $scope.karyawans = KaryawanService.query();
+  .controller('LemburCtrl', function ($scope, LemburService){
+    $scope.currentLembur = {};
+    $scope.lemburs = LemburService.query();
     $scope.isSelected = null;
     $scope.editNip = null;
     
@@ -19,28 +19,28 @@ angular.module('penggajianUiApp')
             return;
         }
         
-        $scope.currentKaryawan = KaryawanService.get({id: x.id}, function(data) {
+        $scope.currentLembur = LemburService.get({id: x.id}, function(data) {
             $scope.editNip = data.nip;
             $scope.validateNip = false;
         });
     };
     
     $scope.save = function() {
-        KaryawanService.save($scope.currentKaryawan).success(function() {
-            $scope.karyawans = KaryawanService.query();
+        LemburService.save($scope.currentLembur).success(function() {
+            $scope.lemburs = LemburService.query();
             $scope.clear();
         })
     };
     
     $scope.clear = function() {
-        $scope.currentKaryawan = "";
+        $scope.currentLembur = "";
     };
     
     $scope.remove = function() {
         $scope.clear();
         if ($scope.isSelected.id != null) {
-            KaryawanService.remove($scope.isSelected).success(function() {
-                $scope.karyawans = KaryawanService.query();
+            LemburService.remove($scope.isSelected).success(function() {
+                $scope.lemburs = LemburService.query();
                 $scope.isSelected = null;
                 $('#modalDelete').modal('hide');
             })
@@ -56,4 +56,5 @@ angular.module('penggajianUiApp')
     $scope.showReportModal = function() {        
         $('#modalReport').modal('show');
     };
+    
   });

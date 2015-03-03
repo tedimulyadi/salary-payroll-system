@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name manajemenPasswordUiApp.controller:AboutCtrl
+ * @name penggajianUiApp.controller:KaryawanCtrl
  * @description
- * # AboutCtrl
- * Controller of the manajemenPasswordUiApp
+ * # KaryawanCtrl
+ * Controller of the penggajianUiApp
  */
 angular.module('penggajianUiApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('KaryawanCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

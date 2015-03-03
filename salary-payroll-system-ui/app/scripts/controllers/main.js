@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the manajemenPasswordUiApp
  */
-angular.module('manajemenPasswordUiApp')
+angular.module('penggajianUiApp')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

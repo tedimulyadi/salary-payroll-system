@@ -258,6 +258,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <a class="btn btn-info" ng-click="showReportModal()"></a>
                 </div>
                 <div class="box-footer clearfix">
                     <div align="center">
@@ -295,6 +296,54 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
         <button type="button" class="btn btn-danger" ng-click="remove()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Report -->
+<div class="modal fade" tabindex="-1" id="modalReport" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Report Absensi {{selected.merchantName}}</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Nip
+                    </th>
+                    <th>
+                        Bulan
+                    </th>
+                    <th>
+                        Tahun
+                    </th>
+                    <th>
+                        Jumlah Alfa
+                    </th>
+                    <th>
+                        Durasi Telat
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in absensies">
+                    <td>{{x.nip}}</td>
+                    <td>{{x.bulan}}</td>
+                    <td>{{x.tahun}}</td>
+                    <td>{{x.jumlahAlfa}}</td>
+                    <td>{{x.durasiTelat}}</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger" ng-click="cetak()">Cetak</button>
       </div>
     </div>
   </div>

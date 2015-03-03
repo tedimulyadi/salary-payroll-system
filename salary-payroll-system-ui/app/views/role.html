@@ -1,0 +1,116 @@
+<!-- FORM INPUT -->
+<div class="row">
+    <div class="col-xs-5">        
+        <form>   
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Form Input Role    
+                </div>
+                   
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label for="name" class="control-label">Name</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="name" ng-model="currentRole.name">
+                                   <option ng-model="myRolename" ng-repeat="role in rolenames" value="{{role.name}}">{{role.name}}</option>
+                               </select>
+                            </div>    
+                        </div>
+
+                  
+                        <div class="form-group">
+                            <div class="col-sm-4">
+                                <label for="description" class="control-label">Description</label>
+                            </div>
+                            <div class="col-sm-8">
+                               <input type="text" name="description" class="form-control" id="description" placeholder="Description" ng-model="currentRole.description">
+                            </div>    
+                        </div>
+                         <div align="right">
+                            <button class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || formUser.$invalid">Save</button>
+                            <button class="btn btn-default" ng-click="clear()">Cancel</button>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </form>     
+    </div>
+    
+
+    
+<!-- TABEL -->
+    <div class="col-xs-7">
+        <table class="table table-border table-hover">
+            <thead>
+                <th>Id</th>
+                <th>Role Name</th>
+                 <th>Description</th>
+                <th class="col-xs-1">
+                    <button type="button" class="btn-right btn btn-default btn-sm btn-block" ng-click="clear()">
+                        <span class="glyphicon glyphicon-plus-sign"></span>
+                    </button> 
+                </th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in roles">
+                    <td>{{x.id}}</td>
+                    <td>{{x.name}}</td>
+                    <td>{{x.description}}</td>
+                     <td class="col-xs-1">
+                        <a class="glyphicon glyphicon-edit" ng-click="edit(x)"></a>
+                        <a class="glyphicon glyphicon-remove" ng-click="showDialogDelete(x)"></a>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <div class="box-footer clearfix">
+        <div align="center">
+            <pagination 
+                total-items="elements" 
+                ng-model="currentPage"
+                ng-change="showReport()"
+                class="pagination-sm"
+                items-per-page="10"
+                max-size="10"
+                boundary-links="true"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;">
+            </pagination>
+        </div>
+    </div>
+</div>
+
+
+<!-- Dialog Delete -->
+<div class="modal fade bs-example-modal-sm" id="dialogDelete" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+          <center>Are you sure ?</center>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" ng-click="remove()" data-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ALERT REPOSRT DELETED -->
+<div class="row">
+    <div class="col-xs-12">
+        <center>
+            <div class="alert {{styleAlert}}" ng-show="alert">
+                <span><b>Success !</b> {{textAlert}}</span>
+            </div>
+        </center>
+    </div>
+</div>

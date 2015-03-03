@@ -1,53 +1,41 @@
 'use strict';
 
-angular.module('penggajianUiApp', [
+/**
+ * @ngdoc overview
+ * @name manajemenPasswordUiApp
+ * @description
+ * # manajemenPasswordUiApp
+ *
+ * Main module of the application.
+ */
+angular
+  .module('manajemenPasswordUiApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'ui.bootstrap'
-])
-.config(function($routeProvider) {
+    'ngTouch'
+  ])
+  .config(function ($routeProvider) {
     $routeProvider
-        .when('/', {
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl'
-        })
-        .when('/main/jabatan', {
-          templateUrl: 'views/jabatan.html',
-          controller: ''
-        })
-        .when('/main/bank', {
-          templateUrl: 'views/bank.html',
-          controller: ''
-        })
-         .when('/main/absensi', {
-          templateUrl: 'views/absensi.html',
-          controller: 'AbsensiCtrl'
-        })
-           .when('/main/cuti', {
-          templateUrl: 'views/cuti.html',
-          controller: ''
-        })
-         .when('/main/lembur', {
-          templateUrl: 'views/lembur.html',
-          controller: ''
-        })
-        .when('/main/pinjaman', {
-          templateUrl: 'views/pinjaman.html',
-          controller: ''
-        })
-        .when('/main/potongan', {
-          templateUrl: 'views/potongan.html',
-          controller: ''
-        })
-        .when('/main/gaji', {
-          templateUrl: 'views/gaji.html',
-          controller: ''
-        })
-        .otherwise({
-            redirectTo: '/'
-        });
-});
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/system/user', {
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
+      })
+       .when('/system/role', {
+        templateUrl: 'views/role.html',
+        controller: 'RoleCtrl'
+      })
+       .when('/report/userreport', {
+        templateUrl: 'views/userreport.html',
+        controller: 'UserreportCtrl   '
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });

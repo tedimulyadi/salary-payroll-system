@@ -52,5 +52,9 @@ angular.module('penggajianUiApp')
         
         $('#modalDelete').modal('show');
     };
+
+    $scope.showReportModal = function() {        
+        $('#modalReport').modal('show');
+    };
     
   });

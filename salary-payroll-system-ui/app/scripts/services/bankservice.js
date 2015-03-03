@@ -4,10 +4,10 @@
  * Factory in the penggajianUiApp.
  */
 angular.module('penggajianUiApp')
-  .factory('bankservice', function () {
+  .factory('BankService', function ($resource, $http, ConfigService) {
   
   return{
-      bank: $resource('/salary-payroll-system-server/api/bank/:id'),
+     bank: $resource(ConfigService.serverUrl + '/api/bank/:id'),
       get: function (param, callback) {
         return this.bank.get(param, callback);
       },
@@ -16,18 +16,19 @@ angular.module('penggajianUiApp')
       },
       save: function(obj){
         if (obj.id == null) {
-          return $http.post('/salary-payroll-system-server/api/bank', obj);
+          return $http.post(ConfigService.serverUrl + '/api/bank', obj);
         }else{
-          return $http.put('/salary-payroll-system-server/api/bank/' + obj.id, obj);
+          return $http.put(ConfigService.serverUrl + '/api/bank/' + obj.id, obj);
         }
       },
       remove: function(obj){
         if (obj.id != null) {
-          return $http.delete('/salary-payroll-system-server/api/bank/' + obj.id);
+          return $http.delete(ConfigService.serverUrl + '/api/bank/' + obj.id);
         }
       },
-      findById: function(id) {
-        return $http.get('/salary-payroll-system-server/api/findById/'+ id);
-      }
+      findById: function(username) {
+        return $http.get(ConfigService.serverUrl + '/api/findById/'+ id);
+      }  
+
      };
   });

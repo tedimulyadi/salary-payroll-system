@@ -35,11 +35,9 @@ public class Gaji {
     @Column(nullable = false, name = "tunjangan_kesehatan")
     private String tunjanganKesehatan;
 
-    @NotNull
     @ManyToOne
-    @Column(name = "id_jabatan")
     private Jabatan idJabatan;
-
+    
     @NotNull
     @Column(nullable = false, name = "total_gaji")
     private String totalGaji;

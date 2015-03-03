@@ -5,7 +5,6 @@
  */
 package com.artivisi.salary.payroll.system.controller;
 
-import com.artivisi.salary.payroll.system.model.Absensi;
 import com.artivisi.salary.payroll.system.model.Karyawan;
 import com.artivisi.salary.payroll.system.service.KaryawanService;
 import javax.servlet.http.HttpServletRequest;
@@ -62,7 +61,7 @@ public class KaryawanController {
         karyawanService.delete(karyawan);
     }
 
-    @RequestMapping(value = "/absensi/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/karyawan/{id}", method = RequestMethod.PUT)
     public void editKaryawan(@PathVariable String id, @RequestBody Karyawan k) throws Exception {
         Karyawan karyawan = karyawanService.findOne(id);
         if (karyawan == null) {

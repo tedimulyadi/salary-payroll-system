@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name manajemenPasswordUiApp.controller:MainCtrl
+ * @name manajemenPasswordUiApp.controller:AboutCtrl
  * @description
- * # MainCtrl
+ * # AboutCtrl
  * Controller of the manajemenPasswordUiApp
  */
 angular.module('manajemenPasswordUiApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

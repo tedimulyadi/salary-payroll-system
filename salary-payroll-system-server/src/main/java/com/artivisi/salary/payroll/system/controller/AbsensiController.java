@@ -32,13 +32,13 @@ public class AbsensiController {
         return absensiService.findAll();
     }
 
-    @RequestMapping(value = "/absensi/{id}", method = RequestMethod.GET)
-    public Absensi findAbsensiById(@PathVariable String id) throws Exception {
-        Absensi absensi = absensiService.findOne(id);
+    @RequestMapping(value = "/absensi/findByNip/{nip}", method = RequestMethod.GET)
+    public Absensi findAbsensiByNip(@PathVariable String nip) throws Exception {
+        Absensi absensi = absensiService.findAbsensiByNip(nip);
         if (absensi == null) {
             throw new Exception("Data tidak ditemukan");
         }
-        return absensiService.findOne(id);
+        return absensi;
     }
 
     @RequestMapping(value = "/absensi", method = RequestMethod.POST)

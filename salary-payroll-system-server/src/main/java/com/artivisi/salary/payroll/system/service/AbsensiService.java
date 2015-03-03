@@ -15,5 +15,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface AbsensiService extends PagingAndSortingRepository<Absensi, String> {
-
+    
+    public Absensi findAbsensiByNip(String nip);
 }

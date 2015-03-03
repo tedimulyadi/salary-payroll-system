@@ -1,0 +1,301 @@
+<style>
+    th {
+        vertical-align: center;
+        text-align: center;
+    }
+    a:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Slip Gaji
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Slip Gaji</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content" >
+    <div class="row">
+        <div class="col-xs-12">
+            <center>
+                <div class="alert {{styleAlert}} alert-dismissible" role="alert" ng-show="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong>Success!</strong> {{textAlert}}
+                </div>
+            </center>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-5">
+            <form name="formAbsensi">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="panel-title">Pilih Karyawan</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div 
+                                class="form-group" 
+                                ng-class="{
+									'has-error':formAbsensi.nip.$invalid, 
+									'has-success':formAbsensi.nip.$valid
+								}">
+                                <div class="col-sm-5">
+                                    <label for="nip" class="control-label">Nip</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="nip" 
+                                        name="nip"
+                                        ng-model="currentAbsensi.nip"
+                                        required />
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formAbsensi.nip.$error.required">
+                                        This Field is Required
+                                    </span>
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="validateNip">
+                                        NIP already exist
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                class="form-group" 
+                                ng-class="{
+									'has-error':formAbsensi.bulan.$invalid, 
+									'has-success':formAbsensi.bulan.$valid
+								}">
+                                <div class="col-sm-5">
+                                    <label for="bulan" class="control-label">Bulan</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="bulan" 
+                                        name="bulan"
+                                        ng-model="currentAbsensi.bulan"
+                                        required />
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formAbsensi.bulan.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+              
+                             <div 
+                                class="form-group" 
+                                ng-class="{
+                                    'has-error':formAbsensi.tahun.$invalid, 
+                                    'has-success':formAbsensi.tahun.$valid
+                                }">
+                                <div class="col-sm-5">
+                                    <label for="gajipokok" class="control-label">Tahun</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="tahun" 
+                                        name="tahun"
+                                        ng-model="currentAbsensi.tahun"
+                                        required />
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formAbsensi.tahun.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                class="form-group" 
+                                ng-class="{
+                                    'has-error':formAbsensi.jumlahAlfa.$invalid, 
+                                    'has-success':formAbsensi.jumlahAlfa.$valid
+                                }">
+                                <div class="col-sm-5">
+                                    <label for="jumlahAlfa" class="control-label">Jumlah Alfa</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="jumlahAlfa" 
+                                        name="jumlahAlfa"
+                                        ng-model="currentAbsensi.jumlahAlfa"
+                                        required />
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formAbsensi.jumlahAlfa.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                class="form-group" 
+                               ng-class="{
+                                    'has-error':formAbsensi.durasiTelat.$invalid, 
+                                    'has-success':formAbsensi.durasiTelat.$valid
+                                }">
+                                <div class="col-sm-5">
+                                    <label for="durasiTelat" class="control-label">Durasi Telat</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        placeholder="Satuan Menit"
+                                        id="durasiTelat" 
+                                        name="durasiTelat"
+                                        ng-model="currentAbsensi.durasiTelat"
+                                        required />
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formAbsensi.durasiTelat.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                class="form-group" 
+                               ng-class="{
+                                    'has-error':formAbsensi.jumlahPotongan.$invalid, 
+                                    'has-success':formAbsensi.jumlahPotongan.$valid
+                                }">
+                                <div class="col-sm-5">
+                                    <label for="jumlahPotongan" class="control-label">Jumlah Potongan</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                    
+                                        id="jumlahPotongan" 
+                                        name="jumlahPotongan"
+                                        ng-model="currentAbsensi.jumlahPotongan"
+                                        required />
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formAbsensi.jumlahPotongan.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div align="right">
+                                <button 
+                                    class="btn btn-primary" 
+                                    ng-click="save()" 
+                                    ng-disabled="isClean() || formAbsensi.$invalid">
+                                    Save
+                                </button>
+                                <button 
+                                    class="btn btn-default" 
+                                    ng-click="clear()">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-7">
+            <div class="box">
+                <div class="box-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nip
+                                </th>
+                                <th>
+                                    Bulan
+                                </th>
+                                <th>
+                                    Tahun
+                                </th>
+                                <th>
+                                    Jumlah Alfa
+                                </th>
+                                <th>
+                                    Durasi Telat
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in absensies">
+                                <td>{{x.nip}}</td>
+                                <td>{{x.bulan}}</td>
+                                <td>{{x.tahun}}</td>
+                                <td>{{x.jumlahAlfa}}</td>
+                                <td>{{x.durasiTelat}}</td>
+                                <td class="col-xs-1">
+                                    <a class="glyphicon glyphicon-pencil" ng-click="edit(x)"></a>
+                                    <a class="glyphicon glyphicon-remove" ng-click="showModalDelete(x)"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box-footer clearfix">
+                    <div align="center">
+                        <pagination 
+                            total-items="elements" 
+                            ng-model="currentPage"
+                            ng-change="reloadVoucher()"
+                            class="pagination-sm"
+                            items-per-page="10"
+                            max-size="10"
+                            boundary-links="true"
+                            previous-text="&lsaquo;"
+                            next-text="&rsaquo;"
+                            first-text="&laquo;"
+                            last-text="&raquo;">
+                        </pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Delete -->
+<div class="modal fade" tabindex="-1" id="modalDelete" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete {{selected.merchantName}}</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" ng-click="remove()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

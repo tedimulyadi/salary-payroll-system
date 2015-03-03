@@ -10,9 +10,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -37,31 +39,13 @@ public class Karyawan {
     @Column(name = "tempat_lahir", nullable = false)
     private String tempatLahir;
 
-    public Jabatan getKodeJabatan() {
-        return kodeJabatan;
-    }
-
-    public void setKodeJabatan(Jabatan kodeJabatan) {
-        this.kodeJabatan = kodeJabatan;
-    }
-
-    public Bank getIdBank() {
-        return idBank;
-    }
-
-//    @Column(name = "tanggal_lahir")
-    public void setIdBank(Bank idBank) {
-        this.idBank = idBank;
-    }
-//    @Temporal(javax.persistence.TemporalType.DATE)
-//    private Date tanggalLahir;
     @NotNull
     @Column(nullable = false)
     private String agama;
 
     @NotNull
     @Column(nullable = false)
-    private String jumlahAnak;
+    private int jumlahAnak;
 
     @NotNull
     @Column(nullable = false)
@@ -69,29 +53,32 @@ public class Karyawan {
 
     @NotNull
     @Column(nullable = false)
-    private String telpon;
+    private int telpon;
 
     @NotNull
     @Column(nullable = false)
     private String pendidikan;
 
-    //relasi dari jabatan 
-//    @Column(name = "kode_jabatan")
+    @NotNull
     @ManyToOne
-    private Jabatan kodeJabatan;
+    @JoinColumn(name = "id_jabatan", nullable = false)
+    private Jabatan jabatan;
     
     @NotNull
+    @Temporal(TemporalType.DATE)
     @Column(name = "tanggal_masuk")
-    private String tanggalMasuk;
+    private Date tanggalMasuk;
 
+    @NotNull
+    @Temporal(TemporalType.DATE)
     @Column(name = "tanggal_keluar")
-    private String tanggalKeluar;
+    private Date tanggalKeluar;
 
-    //relasi dari bank
+    @NotNull
     @ManyToOne
-    private Bank idBank;
-    
-    
+    @JoinColumn(name = "id_bank", nullable = false)
+    private Bank bank;
+
     public String getId() {
         return id;
     }
@@ -124,11 +111,11 @@ public class Karyawan {
         this.agama = agama;
     }
 
-    public String getJumlahAnak() {
+    public int getJumlahAnak() {
         return jumlahAnak;
     }
 
-    public void setJumlahAnak(String jumlahAnak) {
+    public void setJumlahAnak(int jumlahAnak) {
         this.jumlahAnak = jumlahAnak;
     }
 
@@ -140,11 +127,11 @@ public class Karyawan {
         this.alamat = alamat;
     }
 
-    public String getTelpon() {
+    public int getTelpon() {
         return telpon;
     }
 
-    public void setTelpon(String telpon) {
+    public void setTelpon(int telpon) {
         this.telpon = telpon;
     }
 
@@ -156,20 +143,36 @@ public class Karyawan {
         this.pendidikan = pendidikan;
     }
 
-    public String getTanggalMasuk() {
+    public Jabatan getJabatan() {
+        return jabatan;
+    }
+
+    public void setJabatan(Jabatan jabatan) {
+        this.jabatan = jabatan;
+    }
+
+    public Date getTanggalMasuk() {
         return tanggalMasuk;
     }
 
-    public void setTanggalMasuk(String tanggalMasuk) {
+    public void setTanggalMasuk(Date tanggalMasuk) {
         this.tanggalMasuk = tanggalMasuk;
     }
 
-    public String getTanggalKeluar() {
+    public Date getTanggalKeluar() {
         return tanggalKeluar;
     }
 
-    public void setTanggalKeluar(String tanggalKeluar) {
+    public void setTanggalKeluar(Date tanggalKeluar) {
         this.tanggalKeluar = tanggalKeluar;
     }
 
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
+    }
+    
 }

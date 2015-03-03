@@ -29,8 +29,8 @@ angular.module('penggajianUiApp')
           return $http.delete(ConfigService.serverUrl + '/api/absensi/' + obj.id);
         }
       },
-      findById: function(username) {
-        return $http.get(ConfigService.serverUrl + '/api/findById/'+ id);
+      findByNip: function(nip) {
+        return $http.get(ConfigService.serverUrl + '/api/findByNip/'+ nip);
       }
     };
    

@@ -17,11 +17,11 @@ angular.module('penggajianUiApp', [
         })
         .when('/main/jabatan', {
           templateUrl: 'views/jabatan.html',
-          controller: ''
+          controller: 'JabatanCtrl'
         })
         .when('/main/bank', {
           templateUrl: 'views/bank.html',
-          controller: ''
+          controller: 'BankCtrl'
         })
          .when('/main/absensi', {
           templateUrl: 'views/absensi.html',
@@ -29,7 +29,7 @@ angular.module('penggajianUiApp', [
         })
            .when('/main/cuti', {
           templateUrl: 'views/cuti.html',
-          controller: ''
+          controller: 'CutiCtrl'
         })
          .when('/main/lembur', {
           templateUrl: 'views/lembur.html',
@@ -37,11 +37,11 @@ angular.module('penggajianUiApp', [
         })
         .when('/main/pinjaman', {
           templateUrl: 'views/pinjaman.html',
-          controller: ''
+          controller: 'PinjamanCtrl'
         })
         .when('/main/potongan', {
           templateUrl: 'views/potongan.html',
-          controller: ''
+          controller: 'PotonganCtrl'
         })
         .when('/main/gaji', {
           templateUrl: 'views/gaji.html',

@@ -32,5 +32,6 @@ angular.module('penggajianUiApp')
       findByNip: function(nip) {
         return $http.get(ConfigService.serverUrl + '/api/findByNip/'+ nip);
       }
-    };   
+    };
+   
   });

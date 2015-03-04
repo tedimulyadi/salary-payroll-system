@@ -8,9 +8,9 @@
  * Factory in the penggajianUiApp.
  */
 angular.module('penggajianUiApp')
-  .factory('gajiservice', function () {
-     return{
-      gaji: $resource('/salary-payroll-system-server/api/gaji/:id'),
+  .factory('gajiservice', function ($resource, $http, ConfigService) {
+    return{
+      gaji: $resource(ConfigService.serverUrl + '/api/gaji/:id'),
       get: function (param, callback) {
         return this.gaji.get(param, callback);
       },
@@ -19,18 +19,19 @@ angular.module('penggajianUiApp')
       },
       save: function(obj){
         if (obj.id == null) {
-          return $http.post('/salary-payroll-system-server/api/gaji', obj);
+          return $http.post(ConfigService.serverUrl + '/api/gaji', obj);
         }else{
-          return $http.put('/salary-payroll-system-server/api/gaji/' + obj.id, obj);
+          return $http.put(ConfigService.serverUrl + '/api/gaji/' + obj.id, obj);
         }
       },
       remove: function(obj){
         if (obj.id != null) {
-          return $http.delete('/salary-payroll-system-server/api/gaji/' + obj.id);
+          return $http.delete(ConfigService.serverUrl + '/api/gaji/' + obj.id);
         }
       },
-      findById: function(username) {
-        return $http.get('/salary-payroll-system-server/api/findById/'+ id);
+      findByNip: function(nip) {
+        return $http.get(ConfigService.serverUrl + '/api/findByNip/'+ nip);
       }
     };
+   
   });

@@ -8,9 +8,9 @@
  * Factory in the penggajianUiApp.
  */
 angular.module('penggajianUiApp')
-  .factory('cutiservice', function () {
+  .factory('cutiservice', function ($resource, $http, ConfigService) {
     return{
-      cuti: $resource('/salary-payroll-system-server/api/cuti/:id'),
+       cuti: $resource(ConfigService.serverUrl + '/api/cuti/:id'),
       get: function (param, callback) {
         return this.cuti.get(param, callback);
       },
@@ -19,18 +19,18 @@ angular.module('penggajianUiApp')
       },
       save: function(obj){
         if (obj.id == null) {
-          return $http.post('/salary-payroll-system-server/api/cuti', obj);
+          return $http.post(ConfigService.serverUrl + '/api/cuti', obj);
         }else{
-          return $http.put('/salary-payroll-system-server/api/cuti/' + obj.id, obj);
+          return $http.put(ConfigService.serverUrl + '/api/cuti/' + obj.id, obj);
         }
       },
       remove: function(obj){
         if (obj.id != null) {
-          return $http.delete('/salary-payroll-system-server/api/cuti/' + obj.id);
+          return $http.delete(ConfigService.serverUrl + '/api/cuti/' + obj.id);
         }
       },
       findById: function(username) {
-        return $http.get('/salary-payroll-system-server/api/findById/'+ id);
-      }
-    };
+        return $http.get(ConfigService.serverUrl + '/api/findById/'+ id);
+      }  
+     };
   });

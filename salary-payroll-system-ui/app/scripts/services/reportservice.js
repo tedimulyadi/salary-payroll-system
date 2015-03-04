@@ -9,9 +9,5 @@
  */
 angular.module('penggajianUiApp')
   .factory('ReportService', function () {
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
-    };
+    
   });

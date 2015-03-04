@@ -32,4 +32,13 @@ angular.module('penggajianUiApp')
         }
     };
     
+    $scope.showModalDelete = function(x) {
+        $scope.isSelected = x;
+        
+        $('#modalDelete').modal('show');
+    };
+
+    $scope.showReportModal = function() {        
+        $('#modalReport').modal('show');
+    };
   });

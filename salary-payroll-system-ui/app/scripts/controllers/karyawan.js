@@ -9,9 +9,27 @@
  */
 angular.module('penggajianUiApp')
   .controller('KaryawanCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+    
+    $scope.listAgama = [
+        {agama : "Islam"},
+        {agama : "Kristen Protestan"},
+        {agama : "Kristen Katolik"},
+        {agama : "Budha"},
+        {agama : "Hindu"}
     ];
+    
+    $scope.statuses = [
+        {status : "Belum Menikah"},
+        {status : "Menikah"}
+    ];
+    
+    $scope.changeStatus = function(status) {
+        if (status == "Belum Menikah") {
+            $scope.showJumlahAnak = false;
+        } else {
+            $scope.showJumlahAnak = true;
+            $scope.currentKaryawan.jumlahAnak = 0;
+        }
+    };
+    
   });

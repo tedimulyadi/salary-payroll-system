@@ -8,16 +8,26 @@
  * Factory in the penggajianUiApp.
  */
 angular.module('penggajianUiApp')
-  .factory('karyawanservice', function () {
-    // Service logic
-    // ...
-
-    var meaningOfLife = 42;
-
-    // Public API here
+  .factory('karyawanservice', function ($resource, $http, ConfigService) {
     return {
-      someMethod: function () {
-        return meaningOfLife;
+      karyawan: $resource(ConfigService.serverUrl + '/api/karyawan/:id'),
+      get: function (param, callback) {
+        return this.karyawan.get(param, callback);
+      },
+      query: function(){
+        return this.karyawan.query();
+      },
+      save: function(obj){
+        if (obj.id == null) {
+          return $http.post(ConfigService.serverUrl + '/api/karyawan', obj);
+        }else{
+          return $http.put(ConfigService.serverUrl + '/api/karyawan/' + obj.id, obj);
+        }
+      },
+      remove: function(obj){
+        if (obj.id != null) {
+          return $http.delete(ConfigService.serverUrl + '/api/karyawan/' + obj.id);
+        }
       }
     };
   });

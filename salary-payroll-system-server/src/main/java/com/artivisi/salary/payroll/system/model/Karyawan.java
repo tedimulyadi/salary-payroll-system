@@ -5,6 +5,7 @@
  */
 package com.artivisi.salary.payroll.system.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +25,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table(name = "karyawan")
-public class Karyawan {
+public class Karyawan implements Serializable {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -45,6 +46,8 @@ public class Karyawan {
 
     @NotNull
     @Column(nullable = false)
+    private String status;
+    
     private int jumlahAnak;
 
     @NotNull
@@ -66,12 +69,11 @@ public class Karyawan {
     
     @NotNull
     @Temporal(TemporalType.DATE)
-    @Column(name = "tanggal_masuk")
+    @Column(name = "tanggal_masuk", nullable = false)
     private Date tanggalMasuk;
 
-    @NotNull
     @Temporal(TemporalType.DATE)
-    @Column(name = "tanggal_keluar")
+    @Column(name = "tanggal_keluar", nullable = false)
     private Date tanggalKeluar;
 
     @NotNull
@@ -109,6 +111,14 @@ public class Karyawan {
 
     public void setAgama(String agama) {
         this.agama = agama;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getJumlahAnak() {
@@ -174,5 +184,5 @@ public class Karyawan {
     public void setBank(Bank bank) {
         this.bank = bank;
     }
-    
+
 }

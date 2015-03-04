@@ -1,0 +1,382 @@
+<style>
+    th {
+        vertical-align: center;
+        text-align: center;
+    }
+    a:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
+</style>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Karyawan
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#/"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Karyawan</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content" >
+    <div class="row">
+        <div class="col-xs-12">
+            <center>
+                <div class="alert {{styleAlert}} alert-dismissible" role="alert" ng-show="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong>Success!</strong> {{textAlert}}
+                </div>
+            </center>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <form name="formKaryawan">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="panel-title">Input Karyawan</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div 
+                                class="form-group" 
+                                ng-class="{
+									'has-error':formKaryawan.namaLengkap.$invalid, 
+									'has-success':formKaryawan.namaLengkap.$valid
+								}">
+                                <div class="col-sm-5">
+                                    <label for="nip" class="control-label">Nama Karyawan</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="namaLengkap" 
+                                        name="namaLengkap"
+                                        ng-model="currentKaryawan.namaLengkap"
+                                        required />
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formKaryawan.namaLengkap.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                class="form-group" 
+                                ng-class="{
+									'has-error':formKaryawan.tempatLahir.$invalid, 
+									'has-success':formKaryawan.tempatLahir.$valid
+								}">
+                                <div class="col-sm-5">
+                                    <label for="bulan" class="control-label">Tempat Lahir</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="tempatLahir" 
+                                        name="tempatLahir"
+                                        ng-model="currentKaryawan.tempatLahir"
+                                        placeholder="Ex : Jakarta"
+                                        required />
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formKaryawan.tempatLahir.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                 class="form-group" 
+                                 ng-class="{
+                                           'has-error':formKaryawan.agama.$invalid, 
+                                           'has-success':formKaryawan.agama.$valid
+                                           }">
+                                <div class="col-sm-5">
+                                    <label for="agama" class="control-label">Agama</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select class="form-control" name="agama" ng-model="currentKaryawan.agama" required>
+                                        <option ng-model="myAgama" ng-repeat="x in listAgama" value="{{x.agama}}">{{x.agama}}</option>
+                                    </select>
+                                    <span 
+                                          style="float:right; color:white" 
+                                          class="help-block label label-danger" 
+                                          ng-show="formKaryawan.agama.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                 class="form-group" 
+                                 ng-class="{
+                                           'has-error':formKaryawan.status.$invalid, 
+                                           'has-success':formKaryawan.status.$valid
+                                           }">
+                                <div class="col-sm-5">
+                                    <label for="status" class="control-label">Status</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select class="form-control" name="status" ng-model="currentKaryawan.status" ng-change="changeStatus(currentKaryawan.status)" required>
+                                        <option ng-model="myStatus" ng-repeat="x in statuses" value="{{x.status}}" ng-change="changeStatus()">{{x.status}}</option>
+                                    </select>
+                                    <span 
+                                          style="float:right; color:white" 
+                                          class="help-block label label-danger" 
+                                          ng-show="formKaryawan.status.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                class="form-group" 
+                                ng-class="{
+                                    'has-error':formKaryawan.jumlahAnak.$invalid, 
+                                    'has-success':formKaryawan.jumlahAnak.$valid
+                                }"
+                                ng-show="showJumlahAnak">
+                                <div class="col-sm-5">
+                                    <label for="jumlahAlfa" class="control-label">Jumlah Anak</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input 
+                                        type="number" 
+                                        class="form-control" 
+                                        id="jumlahAnak" 
+                                        name="jumlahAnak"
+                                        ng-model="currentKaryawan.jumlahAnak"
+                                        required />
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formKaryawan.jumlahAnak.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                class="form-group" 
+                               ng-class="{
+                                    'has-error':formKaryawan.alamat.$invalid, 
+                                    'has-success':formKaryawan.alamat.$valid
+                                }">
+                                <div class="col-sm-5">
+                                    <label for="alamat" class="control-label">Alamat</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <textarea 
+                                              class="form-control" 
+                                              ng-model="currentKaryawan.alamat" 
+                                              rows="3" 
+                                              name="alamat"
+                                              required
+                                              >
+                                    </textarea>
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formKaryawan.alamat.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                class="form-group" 
+                               ng-class="{
+                                    'has-error':formKaryawan.telpon.$invalid, 
+                                    'has-success':formKaryawan.telpon.$valid
+                                }">
+                                <div class="col-sm-5">
+                                    <label for="telpon" class="control-label">Nomor Telepon / Handphone</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        id="telpon" 
+                                        name="telpon"
+                                        ng-model="currentKaryawan.telpon"
+                                        placeholder="Ex : 021854xxxx / 08123456xxxx"
+                                        required />
+                                    <span 
+                                        style="float:right; color:white" 
+                                        class="help-block label label-danger" 
+                                        ng-show="formKaryawan.telpon.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div 
+                                 class="form-group" 
+                                 ng-class="{
+                                           'has-error':formKaryawan.pendidikan.$invalid, 
+                                           'has-success':formKaryawan.pendidikan.$valid
+                                           }">
+                                <div class="col-sm-5">
+                                    <label for="pendidikan" class="control-label">Pendidikan</label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select class="form-control" name="agama" ng-model="currentKaryawan.agama" required>
+                                        <option ng-model="myAgama" ng-repeat="x in listAgama" value="{{x.agama}}">{{x.agama}}</option>
+                                    </select>
+                                    <span 
+                                          style="float:right; color:white" 
+                                          class="help-block label label-danger" 
+                                          ng-show="formKaryawan.agama.$error.required">
+                                        This Field is Required
+                                    </span>
+                                </div>
+                            </div>
+                            <div align="right">
+                                <button 
+                                    class="btn btn-primary" 
+                                    ng-click="save()" 
+                                    ng-disabled="isClean() || formKaryawan.$invalid">
+                                    Save
+                                </button>
+                                <button 
+                                    class="btn btn-default" 
+                                    ng-click="clear()">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-6">
+            <div class="box">
+                <div class="box-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nip
+                                </th>
+                                <th>
+                                    Bulan
+                                </th>
+                                <th>
+                                    Tahun
+                                </th>
+                                <th>
+                                    Jumlah Alfa
+                                </th>
+                                <th>
+                                    Durasi Telat
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="x in absensies">
+                                <td>{{x.nip}}</td>
+                                <td>{{x.bulan}}</td>
+                                <td>{{x.tahun}}</td>
+                                <td>{{x.jumlahAlfa}}</td>
+                                <td>{{x.durasiTelat}}</td>
+                                <td class="col-xs-1">
+                                    <a class="glyphicon glyphicon-pencil" ng-click="edit(x)"></a>
+                                    <a class="glyphicon glyphicon-remove" ng-click="showModalDelete(x)"></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box-footer clearfix">
+                    <div align="center">
+                        <pagination 
+                            total-items="elements" 
+                            ng-model="currentPage"
+                            ng-change="reloadVoucher()"
+                            class="pagination-sm"
+                            items-per-page="10"
+                            max-size="10"
+                            boundary-links="true"
+                            previous-text="&lsaquo;"
+                            next-text="&rsaquo;"
+                            first-text="&laquo;"
+                            last-text="&raquo;">
+                        </pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Delete -->
+<div class="modal fade" tabindex="-1" id="modalDelete" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete {{selected.merchantName}}</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" ng-click="remove()">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Report -->
+<div class="modal fade" tabindex="-1" id="modalReport" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Report Absensi {{selected.merchantName}}</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Nip
+                    </th>
+                    <th>
+                        Bulan
+                    </th>
+                    <th>
+                        Tahun
+                    </th>
+                    <th>
+                        Jumlah Alfa
+                    </th>
+                    <th>
+                        Durasi Telat
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in absensies">
+                    <td>{{x.nip}}</td>
+                    <td>{{x.bulan}}</td>
+                    <td>{{x.tahun}}</td>
+                    <td>{{x.jumlahAlfa}}</td>
+                    <td>{{x.durasiTelat}}</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger" ng-click="cetak()">Cetak</button>
+      </div>
+    </div>
+  </div>
+</div>

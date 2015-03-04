@@ -47,6 +47,10 @@ angular.module('penggajianUiApp', [
           templateUrl: 'views/gaji.html',
           controller: ''
         })
+        .when('/main/karyawan', {
+          templateUrl: 'views/karyawan.html',
+          controller: 'KaryawanCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });

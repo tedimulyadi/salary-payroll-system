@@ -23,6 +23,16 @@ angular.module('penggajianUiApp')
         {status : "Menikah"}
     ];
     
+    $scope.listPendidikan = [
+        {pendidikan : "SD"},
+        {pendidikan : "SMP"},
+        {pendidikan : "SMA / SMK"},
+        {pendidikan : "D3"},
+        {pendidikan : "S1"},
+        {pendidikan : "S2"},
+        {pendidikan : "S3"}
+    ]
+    
     $scope.changeStatus = function(status) {
         if (status == "Belum Menikah") {
             $scope.showJumlahAnak = false;
@@ -32,13 +42,18 @@ angular.module('penggajianUiApp')
         }
     };
     
-    $scope.showModalDelete = function(x) {
-        $scope.isSelected = x;
+    $scope.openTanggalMasuk = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
         
-        $('#modalDelete').modal('show');
+        $scope.openedTanggalMasuk = true;
     };
-
-    $scope.showReportModal = function() {        
-        $('#modalReport').modal('show');
+    
+    $scope.openTanggalKeluar = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        
+        $scope.openedTanggalKeluar = true;
     };
+    
   });

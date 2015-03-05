@@ -126,24 +126,24 @@
                                      <div 
                                 class="form-group" 
                                 ng-class="{
-                                    'has-error':formBank.namaRekening.$invalid, 
-                                    'has-success':formBank.namaRekening.$valid
+                                    'has-error':formBank.atasNama.$invalid, 
+                                    'has-success':formBank.atasNama.$valid
                                 }">
                                 <div class="col-sm-5">
-                                    <label for="namaRekening" class="control-label">Atas Nama</label>
+                                    <label for="atasNama" class="control-label">Atas Nama</label>
                                 </div>
                                 <div class="col-sm-7">
                                     <input 
                                         type="text" 
                                         class="form-control" 
-                                        id="namaRekening" 
-                                        name="namaRekening"
-                                        ng-model="currentBank.namaRekening"
+                                        id="atasNama" 
+                                        name="atasNama"
+                                        ng-model="currentBank.atasNama"
                                         required />
                                     <span 
                                         style="float:right; color:white" 
                                         class="help-block label label-danger" 
-                                        ng-show="formBank.namaRekening.$error.required">
+                                        ng-show="formBank.atasNama.$error.required">
                                         This Field is Required
                                     </span>
                                 </div>
@@ -190,7 +190,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="x in merchants">
+                            <tr ng-repeat="x in banks">
                                 <td>{{x.kodeBank}}</td>
                                 <td>{{x.namaBank}}</td>
                                 <td>{{x.noRekening}}</td>

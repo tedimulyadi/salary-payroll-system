@@ -31,6 +31,7 @@ angular.module('penggajianUiApp')
             $scope.banks = BankService.query();
             $scope.clear();
         })
+        console.log($scope.currentBank);
     };
 
     $scope.clear = function() {

@@ -8,7 +8,7 @@
  * Factory in the penggajianUiApp.
  */
 angular.module('penggajianUiApp')
-  .factory('cutiservice', function ($resource, $http, ConfigService) {
+  .factory('CutiService', function ($resource, $http, ConfigService) {
     return{
        cuti: $resource(ConfigService.serverUrl + '/api/cuti/:id'),
       get: function (param, callback) {

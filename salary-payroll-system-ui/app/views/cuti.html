@@ -75,24 +75,24 @@
                             <div 
                                 class="form-group" 
                                 ng-class="{
-									'has-error':formCuti.date.$invalid, 
-									'has-success':formCuti.date.$valid
+									'has-error':formCuti.tanggal.$invalid, 
+									'has-success':formCuti.tanggal.$valid
 								}">
                                 <div class="col-sm-5">
-                                    <label for="date" class="control-label">Tanggal</label>
+                                    <label for="tanggal" class="control-label">Tanggal</label>
                                 </div>
                                 <div class="col-sm-7">
                                     <input 
                                         type="text" 
                                         class="form-control" 
-                                        id="date" 
-                                        name="date"
-                                        ng-model="currentCuti.date"
+                                        id="tanggal" 
+                                        name="tanggal"
+                                        ng-model="currentCuti.tanggal"
                                         required />
                                     <span 
                                         style="float:right; color:white" 
                                         class="help-block label label-danger" 
-                                        ng-show="formCuti.date.$error.required">
+                                        ng-show="formCuti.tanggal.$error.required">
                                         This Field is Required
                                     </span>
                                 </div>

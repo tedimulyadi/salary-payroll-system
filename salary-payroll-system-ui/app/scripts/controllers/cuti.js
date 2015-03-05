@@ -30,6 +30,7 @@ angular.module('penggajianUiApp')
             $scope.cuties = CutiService.query();
             $scope.clear();
         })
+        console.log($scope.currentCuti);
     };
 
     $scope.clear = function() {

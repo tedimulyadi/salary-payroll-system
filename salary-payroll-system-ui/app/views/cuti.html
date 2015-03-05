@@ -135,8 +135,7 @@
                                 <div class="col-sm-7">
                                     <input 
                                         type="text" 
-                                        class="form-control" 
-                                       
+                                        class="form-control"
                                         id="jumlahCuti" 
                                         name="jumlahCuti"
                                         ng-model="currentCuti.jumlahCuti"
@@ -192,12 +191,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="x in merchants">
+                            <tr ng-repeat="x in cuties">
                                 <td>{{x.nip}}</td>
-                                <td>{{x.bulan}}</td>
-                                <td>{{x.tahun}}</td>
-                                <td>{{x.jumlahAlfa}}</td>
-                                <td>{{x.durasiTelat}}</td>
+                                <td>{{x.tanggal}}</td>
+                                <td>{{x.keterangan}}</td>
+                                <td>{{x.jumlahCuti}}</td>
                                 <td class="col-xs-1">
                                     <a class="glyphicon glyphicon-pencil" ng-click="edit(x)"></a>
                                     <a class="glyphicon glyphicon-remove" ng-click="showModalDelete(x)"></a>

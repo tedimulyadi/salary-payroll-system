@@ -42,6 +42,11 @@ public class CutiController {
 
     @RequestMapping(value = "/cuti", method = RequestMethod.POST)
     public void saveCuti(@RequestBody Cuti cuti) throws Exception {
+        System.out.println("yang dikirim : ");
+        System.out.println("Nip : " + cuti.getNip());
+        System.out.println("Tanggal : " + cuti.getTanggal());
+        System.out.println("Keterangan : " + cuti.getKeterangan());
+        System.out.println("Jumlah Cuti : " + cuti.getJumlahCuti());
         if (cuti == null) {
             throw new Exception("Tidak boleh kosong");
         }

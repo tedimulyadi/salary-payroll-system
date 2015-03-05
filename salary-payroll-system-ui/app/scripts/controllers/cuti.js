@@ -26,11 +26,11 @@ angular.module('penggajianUiApp')
  	};
 
  	$scope.save = function() {
+        console.log($scope.currentCuti);
         CutiService.save($scope.currentCuti).success(function() {
             $scope.cuties = CutiService.query();
             $scope.clear();
         })
-        console.log($scope.currentCuti);
     };
 
     $scope.clear = function() {

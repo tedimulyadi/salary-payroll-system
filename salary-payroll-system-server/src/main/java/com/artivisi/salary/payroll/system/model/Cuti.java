@@ -1,5 +1,6 @@
 package com.artivisi.salary.payroll.system.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table(name = "cuti")
-public class Cuti {
+public class Cuti implements Serializable {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -53,14 +54,6 @@ public class Cuti {
         this.nip = nip;
     }
 
-    public String getTanggalBulan() {
-        return tanggal;
-    }
-
-    public void setTanggalBulan(String tanggal) {
-        this.tanggal = tanggal;
-    }
-
     public String getKeterangan() {
         return keterangan;
     }
@@ -77,4 +70,12 @@ public class Cuti {
         this.jumlahCuti = jumlahCuti;
     }
 
+    public String getTanggal() {
+        return tanggal;
+    }
+
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
+    }
+    
 }

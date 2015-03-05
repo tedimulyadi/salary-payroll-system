@@ -28,19 +28,15 @@ public class Jabatan {
 
     @NotNull
     @Column(name = "kode_jabatan", nullable = false)
-    private String kodeJbatan;
+    private String kodeJabatan;
 
     @NotNull
     @Column(name = "nama_jabatan", nullable = false)
     private String namaJabatan;
 
     @NotNull
-    @Column(name = "level_jabatan", nullable = false)
-    private String levelJabatan;
-
-    @NotNull
     @Column(name = "gaji_pokok", nullable = false)
-    private String gaiPokok;
+    private String gajiPokok;
 
     @NotNull
     @Column(name = "tunjangan_jabatan", nullable = false)
@@ -54,36 +50,12 @@ public class Jabatan {
         this.id = id;
     }
 
-    public String getKodeJbatan() {
-        return kodeJbatan;
-    }
-
-    public void setKodeJbatan(String kodeJbatan) {
-        this.kodeJbatan = kodeJbatan;
-    }
-
     public String getNamaJabatan() {
         return namaJabatan;
     }
 
     public void setNamaJabatan(String namaJabatan) {
         this.namaJabatan = namaJabatan;
-    }
-
-    public String getLevelJabatan() {
-        return levelJabatan;
-    }
-
-    public void setLevelJabatan(String levelJabatan) {
-        this.levelJabatan = levelJabatan;
-    }
-
-    public String getGaiPokok() {
-        return gaiPokok;
-    }
-
-    public void setGaiPokok(String gaiPokok) {
-        this.gaiPokok = gaiPokok;
     }
 
     public String getTunjanganJabatan() {
@@ -94,4 +66,20 @@ public class Jabatan {
         this.tunjanganJabatan = tunjanganJabatan;
     }
 
+    public String getGajiPokok() {
+        return gajiPokok;
+    }
+
+    public void setGajiPokok(String gajiPokok) {
+        this.gajiPokok = gajiPokok;
+    }
+
+    public String getKodeJabatan() {
+        return kodeJabatan;
+    }
+
+    public void setKodeJabatan(String kodeJabatan) {
+        this.kodeJabatan = kodeJabatan;
+    }
+    
 }

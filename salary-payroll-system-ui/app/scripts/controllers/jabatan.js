@@ -26,6 +26,7 @@ angular.module('penggajianUiApp')
  	};
 
  	$scope.save = function() {
+        console.log($scope.currentJabatan);
         JabatanService.save($scope.currentJabatan).success(function() {
             $scope.jabatans = JabatanService.query();
             $scope.clear();

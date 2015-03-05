@@ -10,7 +10,6 @@
 angular.module('penggajianUiApp')
   .controller('KaryawanCtrl', function ($scope, KaryawanService, BankService) {
     $scope.banks = BankService.query();
-    console.log($scope.banks);
     
     $scope.listAgama = [
         {agama : "Islam"},

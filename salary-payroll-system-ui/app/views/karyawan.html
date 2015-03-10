@@ -7,6 +7,9 @@
         cursor: pointer;
         text-decoration: none;
     }
+    .modal-custom {
+        width: 950px;
+    }
 </style>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -136,11 +139,7 @@
                                     </div>
                                 </div>
                                 <div 
-                                    class="form-group" 
-                                    ng-class="{
-                                        'has-error':formKaryawan.jumlahAnak.$invalid, 
-                                        'has-success':formKaryawan.jumlahAnak.$valid
-                                    }"
+                                    class="form-group"
                                     ng-show="showJumlahAnak">
                                     <div class="col-sm-5">
                                         <label for="jumlahAlfa" class="control-label">Jumlah Anak</label>
@@ -151,14 +150,7 @@
                                             class="form-control" 
                                             id="jumlahAnak" 
                                             name="jumlahAnak"
-                                            ng-model="currentKaryawan.jumlahAnak"
-                                            required />
-                                        <span 
-                                            style="float:right; color:white" 
-                                            class="help-block label label-danger" 
-                                            ng-show="formKaryawan.jumlahAnak.$error.required">
-                                            This Field is Required
-                                        </span>
+                                            ng-model="currentKaryawan.jumlahAnak" />
                                     </div>
                                 </div>
                                 <div 
@@ -269,12 +261,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div 
-                                     class="form-group" 
-                                     ng-class="{
-                                               'has-error':formKaryawan.tanggalKeluar.$invalid, 
-                                               'has-success':formKaryawan.tanggalKeluar.$valid
-                                               }">
+                                <div class="form-group">
                                     <div class="col-sm-5">
                                         <label for="tanggalKeluar" class="control-label">Tanggal Keluar Kerja</label>
                                     </div>
@@ -286,18 +273,11 @@
                                                  ng-model="currentKaryawan.tanggalKeluar"
                                                  datepicker-popup="dd MMMM yyyy" 
                                                  is-open="openedTanggalKeluar" 
-                                                 close-text="Close" 
-                                                 required />
+                                                 close-text="Close" />
                                           <span class="input-group-btn">
                                             <button type="button" class="btn btn-default" ng-click="openTanggalKeluar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                           </span>
                                         </p>
-                                        <span 
-                                              style="float:right; color:white" 
-                                              class="help-block label label-danger" 
-                                              ng-show="formKaryawan.tanggalMasuk.$error.required">
-                                            This Field is Required
-                                        </span>
                                     </div>
                                 </div>
                                 <div 
@@ -316,7 +296,28 @@
                                         <span 
                                               style="float:right; color:white" 
                                               class="help-block label label-danger" 
-                                              ng-show="formKaryawan.status.$error.required">
+                                              ng-show="formKaryawan.jabatan.$error.required">
+                                            This Field is Required
+                                        </span>
+                                    </div>
+                                </div>
+                                <div 
+                                     class="form-group" 
+                                     ng-class="{
+                                               'has-error':formKaryawan.jabatan.$invalid, 
+                                               'has-success':formKaryawan.jabatan.$valid
+                                               }">
+                                    <div class="col-sm-5">
+                                        <label for="status" class="control-label">Jabatan</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" name="jabatan" ng-model="currentKaryawan.jabatan.id" required>
+                                            <option ng-model="myJabatan" ng-repeat="x in jabatans" value="{{x.id}}">{{x.namaJabatan}}</option>
+                                        </select>
+                                        <span 
+                                              style="float:right; color:white" 
+                                              class="help-block label label-danger" 
+                                              ng-show="formKaryawan.jabatan.$error.required">
                                             This Field is Required
                                         </span>
                                     </div>
@@ -349,19 +350,19 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Nip
+                                    Nama
                                 </th>
                                 <th>
-                                    Bulan
+                                    Jabatan
                                 </th>
                                 <th>
-                                    Tahun
+                                    Tanggal Masuk Kerja
                                 </th>
                                 <th>
-                                    Jumlah Alfa
+                                    Alamat
                                 </th>
                                 <th>
-                                    Durasi Telat
+                                    Nomor Telepon
                                 </th>
                                 <th>
                                     Action
@@ -369,15 +370,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="x in absensies">
-                                <td>{{x.nip}}</td>
-                                <td>{{x.bulan}}</td>
-                                <td>{{x.tahun}}</td>
-                                <td>{{x.jumlahAlfa}}</td>
-                                <td>{{x.durasiTelat}}</td>
+                            <tr ng-repeat="x in karyawans">
+                                <td>{{x.namaLengkap}}</td>
+                                <td>{{x.jabatan.namaJabatan}}</td>
+                                <td>{{x.tanggalMasuk}}</td>
+                                <td>{{x.alamat}}</td>
+                                <td>{{x.telpon}}</td>
                                 <td class="col-xs-1">
-                                    <a class="glyphicon glyphicon-pencil" ng-click="edit(x)"></a>
-                                    <a class="glyphicon glyphicon-remove" ng-click="showModalDelete(x)"></a>
+                                    <a class="glyphicon glyphicon-pencil" ng-click="edit(x)" tooltip-placement="top" tooltip="Edit {{x.namaLengkap}}"></a>
+                                    <a class="glyphicon glyphicon-remove" ng-click="showModalDelete(x)" tooltip-placement="top" tooltip="Delete {{x.namaLengkap}}"></a>
+                                    <a class="glyphicon glyphicon-list-alt" ng-click="showModalDetail(x)" tooltip-placement="top" tooltip="View Detail {{x.namaLengkap}}"></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -411,7 +413,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Delete {{selected.merchantName}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Delete {{isSelected.namaLengkap}}</h4>
       </div>
       <div class="modal-body">
         Are you sure ?
@@ -424,49 +426,76 @@
   </div>
 </div>
 
-<!-- Modal Report -->
-<div class="modal fade" tabindex="-1" id="modalReport" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<!-- Modal Detail -->
+<div class="modal fade" tabindex="-1" id="modalDetail" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-custom">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Report Absensi {{selected.merchantName}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Detail {{isSelected.namaLengkap}}</h4>
       </div>
       <div class="modal-body">
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th>
-                        Nip
+                        Nama
                     </th>
                     <th>
-                        Bulan
+                        Tempat Lahir
                     </th>
                     <th>
-                        Tahun
+                        Agama
                     </th>
                     <th>
-                        Jumlah Alfa
+                        Status
                     </th>
                     <th>
-                        Durasi Telat
+                        Jumlah Anak
+                    </th>
+                    <th>
+                        Alamat
+                    </th>
+                    <th>
+                        Nomor Telepon
+                    </th>
+                    <th>
+                        Pendidikan
+                    </th>
+                    <th>
+                        Tanggal Masuk Kerja
+                    </th>
+                    <th>
+                        Tanggal Keluar Kerja
+                    </th>
+                    <th>
+                        Bank
+                    </th>
+                    <th>
+                        Jabatan
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="x in absensies">
-                    <td>{{x.nip}}</td>
-                    <td>{{x.bulan}}</td>
-                    <td>{{x.tahun}}</td>
-                    <td>{{x.jumlahAlfa}}</td>
-                    <td>{{x.durasiTelat}}</td>
+                <tr>
+                    <td>{{isSelected.namaLengkap}}</td>
+                    <td>{{isSelected.tempatLahir}}</td>
+                    <td>{{isSelected.agama}}</td>
+                    <td>{{isSelected.status}}</td>
+                    <td>{{isSelected.jumlahAnak}}</td>
+                    <td>{{isSelected.alamat}}</td>
+                    <td>{{isSelected.telpon}}</td>
+                    <td>{{isSelected.pendidikan}}</td>
+                    <td>{{isSelected.tanggalMasuk}}</td>
+                    <td>{{isSelected.tanggalKeluar}}</td>
+                    <td>{{isSelected.bank.namaBank}}</td>
+                    <td>{{isSelected.jabatan.namaJabatan}}</td>
                 </tr>
             </tbody>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-        <button type="button" class="btn btn-danger" ng-click="cetak()">Cetak</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
       </div>
     </div>
   </div>

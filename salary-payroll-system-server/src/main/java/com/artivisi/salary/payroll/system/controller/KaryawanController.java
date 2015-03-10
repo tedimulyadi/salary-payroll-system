@@ -49,7 +49,7 @@ public class KaryawanController {
         karyawanService.save(karyawan);
     }
 
-    @RequestMapping(value = "/karyawan", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/karyawan/{id}", method = RequestMethod.DELETE)
     public void deleteKaryawan(@PathVariable(value = "id") String id) throws Exception {
         if (id == null) {
             throw new Exception("id tidak ada");

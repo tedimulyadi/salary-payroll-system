@@ -56,7 +56,7 @@ public class Karyawan implements Serializable {
 
     @NotNull
     @Column(nullable = false)
-    private int telpon;
+    private String telpon;
 
     @NotNull
     @Column(nullable = false)
@@ -73,7 +73,7 @@ public class Karyawan implements Serializable {
     private Date tanggalMasuk;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "tanggal_keluar", nullable = false)
+    @Column(name = "tanggal_keluar")
     private Date tanggalKeluar;
 
     @NotNull
@@ -137,11 +137,11 @@ public class Karyawan implements Serializable {
         this.alamat = alamat;
     }
 
-    public int getTelpon() {
+    public String getTelpon() {
         return telpon;
     }
 
-    public void setTelpon(int telpon) {
+    public void setTelpon(String telpon) {
         this.telpon = telpon;
     }
 

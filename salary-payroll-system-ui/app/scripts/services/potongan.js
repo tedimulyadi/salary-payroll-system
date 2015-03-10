@@ -8,7 +8,7 @@
  * Factory in the penggajianUiApp.
  */
 angular.module('penggajianUiApp')
-  .factory('potongan', function ($resource, $http, ConfigService) {
+  .factory('PotonganService', function ($resource, $http, ConfigService) {
      return{
       potongan: $resource(ConfigService.serverUrl + '/api/potongan/:id'),
       get: function (param, callback) {

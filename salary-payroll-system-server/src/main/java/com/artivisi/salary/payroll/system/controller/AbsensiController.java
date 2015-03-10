@@ -7,13 +7,14 @@ package com.artivisi.salary.payroll.system.controller;
 
 import com.artivisi.salary.payroll.system.model.Absensi;
 import com.artivisi.salary.payroll.system.service.AbsensiService;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -42,7 +43,7 @@ public class AbsensiController {
     }
 
     @RequestMapping(value = "/absensi", method = RequestMethod.POST)
-    public void saveAbsensi(@RequestBody Absensi absensi, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public void saveAbsensi(@RequestBody Absensi absensi) throws Exception {
         if (absensi == null) {
             throw new Exception("Tidak boleh kosong");
         }
@@ -62,12 +63,19 @@ public class AbsensiController {
     }
 
     @RequestMapping(value = "/absensi/{id}", method = RequestMethod.PUT)
-    public void editAbsensi(@PathVariable String id, @RequestBody Absensi a) throws Exception {
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable(value = "id") String id, @RequestBody Absensi a) throws Exception {
         Absensi absensi = absensiService.findOne(id);
         if (absensi == null) {
             throw new Exception("Data tidak ditemukan");
         }
         a.setId(absensi.getId());
         absensiService.save(a);
+    }
+    
+    @RequestMapping(value = "/absensi/{id}", method = RequestMethod.GET)
+    public Absensi findById(@PathVariable String id) {
+        Absensi absensi = absensiService.findById(id);
+        return absensi;
     }
 }

@@ -6,7 +6,9 @@
 package com.artivisi.salary.payroll.system.service;
 
 import com.artivisi.salary.payroll.system.model.Absensi;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,4 +19,7 @@ import org.springframework.stereotype.Repository;
 public interface AbsensiService extends PagingAndSortingRepository<Absensi, String> {
     
     public Absensi findAbsensiByNip(String nip);
+    
+    @Query("select a from Absensi a where a.id = :id")
+    public Absensi findById(@Param("id") String id);
 }
